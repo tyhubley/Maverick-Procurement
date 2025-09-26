@@ -26,7 +26,7 @@ export default function ContactPage() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4">
           <p className="text-sm uppercase tracking-widest text-gray-500 mb-3">Contact</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Get in touch</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Get in touch!</h1>
           <p className="mt-4 text-gray-600 max-w-2xl">
             Supply Chain Service and Mexico Sourcing — Contact us using the form or details below.
           </p>
