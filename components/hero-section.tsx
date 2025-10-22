@@ -6,8 +6,8 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/professional-business-woman-with-long-brown-hair-i.jpg"
-          alt="Professional business consultant"
+          src="/assets/pro-consulting-practice-935x572.webp"
+          alt="Professional consulting practice"
           className="w-full h-full object-cover"
         />
         {/* Dark overlay */}
@@ -23,21 +23,26 @@ export function HeroSection() {
       <div className="relative z-20 max-w-7xl mx-auto px-4 text-center">
         <div className="max-w-3xl mx-auto">
           {/* Small heading */}
-          <p className="text-white/90 text-sm font-medium tracking-wider uppercase mb-6">MEET CONSULTING</p>
+          <p className="text-white/90 text-sm font-medium tracking-wider uppercase mb-6">PROVEN. BOTTOM LINE. IMPACT.</p>
 
           {/* Main heading */}
-          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 text-balance">
-            Financial Analysis
+          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-balance">
+            Multinational Supply Chain Transformation
             <br />
-            Developing Meeting.
+            & Low Cost Country Sourcing
           </h1>
+          <p className="text-white/90 max-w-3xl mx-auto mb-8">
+            Our goal is to provide business continuity without disrupting day-to-day operations. We deliver savings fast
+            with a proven track record across Mexico and India sourcing.
+          </p>
 
           {/* CTA Button */}
           <Button
             variant="outline"
             className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 text-lg font-medium rounded-md transition-all duration-300"
+            asChild
           >
-            Our Services
+            <a href="/services/mexico-sourcing">Explore Mexico Sourcing</a>
           </Button>
         </div>
       </div>
