@@ -71,7 +71,7 @@ export function InteractiveServiceGrid() {
           href={item.href}
           className="group block p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300 h-full"
         >
-          <div className="text-red-600 text-3xl mb-4">📌</div>
+          <div className="text-red-600 text-3xl mb-4">•</div>
           <h3 className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors mb-3">{item.title}</h3>
           <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
         </Link>

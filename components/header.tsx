@@ -40,10 +40,7 @@ export function Header() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Facebook className="w-4 h-4 hover:text-red-500 cursor-pointer transition-colors" />
-            <Twitter className="w-4 h-4 hover:text-red-500 cursor-pointer transition-colors" />
             <Linkedin className="w-4 h-4 hover:text-red-500 cursor-pointer transition-colors" />
-            <Instagram className="w-4 h-4 hover:text-red-500 cursor-pointer transition-colors" />
           </div>
         </div>
       </div>
@@ -124,8 +121,11 @@ export function Header() {
               <Link href="/industries" className="text-gray-700 hover:text-red-500 font-semibold transition-colors">
                 Industries
               </Link>
+              <Link href="/blog" className="text-gray-700 hover:text-red-500 font-semibold transition-colors">
+                Blog
+              </Link>
               <Link href="/resources" className="text-gray-700 hover:text-red-500 font-semibold transition-colors">
-                Resources
+                Case Studies
               </Link>
               <Link href="/contact" className="text-gray-700 hover:text-red-500 font-semibold transition-colors">
                 Contact Us
@@ -133,9 +133,11 @@ export function Header() {
             </nav>
 
             {/* CTA Button */}
-            <Button className="bg-red-500 hover:bg-red-600 text-white px-7 py-3 rounded-md font-semibold uppercase tracking-wide">
-              Get in Touch
-            </Button>
+            <Link href="/contact">
+              <Button className="bg-red-500 hover:bg-red-600 text-white px-7 py-3 rounded-md font-semibold uppercase tracking-wide">
+                Get in Touch
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

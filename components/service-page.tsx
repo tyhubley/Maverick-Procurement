@@ -30,17 +30,14 @@ export function ServicePage({
   whyTitle,
   whyBody,
   faqs = [],
-  popular = [
-    { title: "Investment Planning", body: "These cases are perfectly simple and easy to distinguish. In a free hour, when our power." },
-    { title: "Markets Research", body: "These cases are perfectly simple and easy to distinguish. In a free hour, when our power." },
-  ],
+  popular = [],
   ctaText,
   ctaHref,
   testimonial = {
     quote:
       "What impressed me most about working with Jim and Maverick Procurement was how quickly he became a trusted partner. He took the time to understand our challenges in sourcing, then brought forward creative solutions that delivered savings and long-term value. Jim's 'Maverick' mindset — challenging the status quo and driving results — was exactly what we needed. I would gladly recommend him to any company looking to turn procurement into a competitive advantage.",
     author: "Mindy Rapp",
-    role: "Marketing Manager",
+    role: "Chief Operating Officer",
     image: "/5 (1).png",
   },
 }: {
@@ -121,9 +118,9 @@ export function ServicePage({
                 style={{ backgroundImage: "url('/placeholder.svg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
               />
               <div className="relative">
-                <h4 className="text-3xl font-extrabold">Need Help?</h4>
+                <h4 className="text-3xl font-extrabold">Need a smarter sourcing strategy?</h4>
                 <p className="mt-4 text-white/90 text-lg leading-7">
-                  Speak with a human to filling out a form? call corporate office and we will connect you with a team member help.
+                  Connect with our procurement experts — we'll help you identify cost savings, streamline suppliers, and strengthen your supply chain.
                 </p>
                 {phone && (
                   <div className="mt-8 text-3xl md:text-4xl font-extrabold tracking-tight">{phone}</div>
@@ -275,17 +272,10 @@ export function ServicePage({
           {/* Right stats */}
           <div className="flex flex-col gap-10 lg:pl-16">
             <div className="flex items-center gap-6">
-              <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">🤝</div>
+              <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">+</div>
               <div>
                 <div className="text-5xl font-extrabold">500+</div>
                 <div className="text-white/90">Business advices given over 15 years</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">🧑‍🤝‍🧑</div>
-              <div>
-                <div className="text-5xl font-extrabold">30+</div>
-                <div className="text-white/90">Business Excellence awards achieved</div>
               </div>
             </div>
           </div>

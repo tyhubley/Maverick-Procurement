@@ -6,6 +6,8 @@ import { ScrollReveal } from "@/components/scroll-reveal"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { Award, Globe } from "lucide-react"
 import { InteractiveServiceGrid } from "@/components/interactive-service-grid"
+import { LogoCarousel } from "@/components/logo-carousel"
+import { useState, useEffect } from "react"
 
 // HomepageServiceLink component
 function HomepageServiceLink({ href, children, active = false }: { href: string; children: React.ReactNode; active?: boolean }) {
@@ -44,6 +46,44 @@ function InteractiveServiceLink({ href, service, children }: { href: string; ser
 }
 
 export default function HomePage() {
+  const logos = [
+    { src: "/assets/Krones_Logo.webp", alt: "Krones Manufacturing" },
+    { src: "/assets/REV-2-Color-logo-with-Tag.png", alt: "REV Manufacturing" },
+    { src: "/assets/MTI-Logo-400-x-150.webp", alt: "MTI Manufacturing" },
+    { src: "/assets/fecon.png?v=2", alt: "Fecon Logo" },
+    { src: "/assets/Catalyst-Logo.webp?v=2", alt: "Catalyst Logo" },
+    { src: "/assets/Logo_Schwing_Group.svg.png?v=2", alt: "Schwing Group" },
+    { src: "/Konecranes-Logo.wine.png", alt: "Konecranes" },
+    { src: "/logos/latitude_corp_logo.jpeg", alt: "Latitude Corp" },
+    { src: "/1abc1b9d-ca36-48e3-8285-a70084bcfe79.png", alt: "Partner Logo" },
+    { src: "/646f53cfa64f42e6c9164509_sastrify_logo.webp", alt: "Sastrify" },
+  ]
+
+  const testimonials = [
+    {
+      quote: "What impressed me most about working with Jim and Maverick Procurement was how quickly he became a trusted partner. He took the time to understand our challenges in sourcing, then brought forward creative solutions that delivered savings and long-term value. Jim's 'Maverick' mindset — challenging the status quo and driving results — was exactly what we needed. I would gladly recommend him to any company looking to turn procurement into a competitive advantage.",
+      author: "Mindy Rapp",
+      role: "Chief Operating Officer",
+      image: "/5 (1).png",
+    },
+    {
+      quote: "If you need support on a sourcing project, education, realignment, AltaLink offers a variety of strategic initiatives and alignment within your organization. They have the ability to drive change in sourcing and purchasing downstream as well as communicate to the C-Suite. They adapt to your company culture (act as an employee), represent your company as if they were a full-time employee, and willing to visit vendors to drive positive change (including the hard negotiations).",
+      author: "Dennis Marcotte",
+      role: "Director, Global Supply Chain",
+      image: "/5 (1).png", // Using same placeholder image
+    }
+  ]
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+    }, 5000) // Change every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [testimonials.length])
+
   return (
     <div className="min-h-screen">
       <HeroSection />
@@ -60,18 +100,27 @@ export default function HomePage() {
             <div>
               <p className="text-sm uppercase tracking-widest"><span className="text-red-600">Feel</span> <span className="text-fuchsia-600">Valued</span> & <span className="text-indigo-600">Rewarded</span></p>
               <h2 className="mt-3 text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                Multinational Supply Chain Transformation &
-                <br className="hidden md:block" /> Low Cost Country (LCC) Sourcing Partner
+                Let's uncover your hidden savings.
               </h2>
               <p className="mt-4 text-lg font-semibold text-gray-900">Proven. Bottom Line. Impact.</p>
               <p className="mt-4 text-gray-600 max-w-2xl">
-                Our goal is to provide business continuity for our clients without disrupting day-to-day operations. With a proven track
-                record of delivering savings to multi-billion dollar firms, Maverick Procurement serves as a Partner to our clients through their supply
-                chain transformation journey. We consider ourselves part of your business and deliver savings results fast.
+                15+ years driving multimillion-dollar savings in manufacturing supply chains.
+              </p>
+              <p className="mt-2 text-gray-600 max-w-2xl">
+                Average 12–25% savings achieved in the first 90 days.
+              </p>
+              <p className="mt-2 text-gray-600 max-w-2xl">
+                From cost centers to profit engines.
+              </p>
+              <p className="mt-2 text-gray-600 max-w-2xl">
+                Delivering measurable savings — fast.
+              </p>
+              <p className="mt-2 text-gray-600 max-w-2xl">
+                We make procurement a growth lever, not just a function.
               </p>
               <div className="mt-8 flex items-center gap-6">
                 <div>
-                  <div className="font-semibold text-gray-900">Jim Bouldry</div>
+                  <div className="font-semibold text-gray-900">Jim Boldrey</div>
                   <div className="text-sm text-gray-600">CEO & Founder</div>
                 </div>
                 <div className="h-10 w-40 border-b border-gray-300" />
@@ -83,7 +132,7 @@ export default function HomePage() {
           <ScrollReveal delay={200}>
             <div className="relative group">
               <img 
-                src="/assets/GettyImages-1133767597.webp" 
+                src="/assets/istockphoto-1413761479-612x612.jpg" 
                 alt="Consulting" 
                 className="w-full h-[420px] object-cover rounded-md transition-transform duration-700 group-hover:scale-105" 
               />
@@ -91,25 +140,6 @@ export default function HomePage() {
               {/* Decorative slashes with animation */}
               <div className="hidden md:block absolute -right-8 bottom-6 w-40 h-1 bg-red-600 rotate-45 animate-pulse" />
               <div className="hidden md:block absolute right-4 bottom-2 w-40 h-1 bg-purple-500 rotate-45 animate-pulse" style={{animationDelay: '0.5s'}} />
-
-              {/* Overlay stats card with hover animation */}
-              <div className="absolute -bottom-10 left-6 bg-[#1f242b] text-white rounded-lg w-[85%] md:w-[70%] p-8 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
-                <div className="flex items-center gap-4">
-                  <div className="text-red-500 transition-transform duration-300 hover:scale-110"><Award className="w-8 h-8" /></div>
-                  <div>
-                    <div className="text-3xl font-extrabold">98%</div>
-                    <div className="text-sm text-white/80">Consulting Success</div>
-                  </div>
-                </div>
-                <div className="my-6 h-px bg-white/15" />
-                <div className="flex items-center gap-4">
-                  <div className="text-red-500 transition-transform duration-300 hover:scale-110"><Globe className="w-8 h-8" /></div>
-                  <div>
-                    <div className="text-3xl font-extrabold">120+</div>
-                    <div className="text-sm text-white/80">Worldwide Clients</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </ScrollReveal>
         </div>
@@ -177,13 +207,8 @@ export default function HomePage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <h3 className="text-center text-gray-500 uppercase tracking-widest">Trusted by teams at</h3>
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-6 gap-6">
-            <LogoBox src="/assets/Krones_Logo.webp" alt="Krones Manufacturing" />
-            <LogoBox src="/assets/REV-2-Color-logo-with-Tag.png" alt="REV Manufacturing" />
-            <LogoBox src="/assets/MTI-Logo-400-x-150.webp" alt="MTI Manufacturing" />
-            <LogoBox src="/assets/fecon.png?v=2" alt="Fecon Logo" />
-            <LogoBox src="/assets/Catalyst-Logo.webp?v=2" alt="Catalyst Logo" />
-            <LogoBox src="/assets/Logo_Schwing_Group.svg.png?v=2" alt="Schwing Group" />
+          <div className="mt-6">
+            <LogoCarousel logos={logos} />
           </div>
         </div>
       </section>
@@ -293,7 +318,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonial section (from service pages) */}
+      {/* Testimonial section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -307,14 +332,14 @@ export default function HomePage() {
                 <div className="relative flex-shrink-0">
                   <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-red-500 relative">
                     <img
-                      src="/5 (1).png"
-                      alt="Mindy Rapp"
+                      src={testimonials[currentTestimonial].image}
+                      alt={testimonials[currentTestimonial].author}
                       className="w-full h-full object-cover"
                     />
                     {/* Pointing finger with dashed lines */}
                     <div className="absolute -right-8 top-1/2 transform -translate-y-1/2">
                       <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-lg">👆</span>
+                        <span className="text-white text-lg">→</span>
                       </div>
                       {/* Dashed lines */}
                       <div className="absolute right-6 top-1/2 w-16 h-0.5 bg-red-500 opacity-60" style={{
@@ -338,7 +363,7 @@ export default function HomePage() {
 
                   {/* Testimonial quote */}
                   <blockquote className="text-gray-700 text-lg leading-relaxed mb-6">
-                    "What impressed me most about working with Jim and Maverick Procurement was how quickly he became a trusted partner. He took the time to understand our challenges in sourcing, then brought forward creative solutions that delivered savings and long-term value. Jim's 'Maverick' mindset — challenging the status quo and driving results — was exactly what we needed. I would gladly recommend him to any company looking to turn procurement into a competitive advantage."
+                    "{testimonials[currentTestimonial].quote}"
                   </blockquote>
 
                   {/* Separator line */}
@@ -348,13 +373,26 @@ export default function HomePage() {
                   <div className="flex items-center gap-4">
                     <div className="text-6xl text-red-500 font-bold">"</div>
                     <div>
-                      <div className="font-bold text-gray-900 text-lg">Mindy Rapp</div>
-                      <div className="text-gray-600">Marketing Manager</div>
+                      <div className="font-bold text-gray-900 text-lg">{testimonials[currentTestimonial].author}</div>
+                      <div className="text-gray-600">{testimonials[currentTestimonial].role}</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          
+          {/* Dots indicator */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentTestimonial(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  index === currentTestimonial ? 'bg-red-600' : 'bg-gray-300'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -387,17 +425,10 @@ export default function HomePage() {
           {/* Right stats */}
           <div className="flex flex-col gap-10 lg:pl-16">
             <div className="flex items-center gap-6">
-              <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">🤝</div>
+              <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">+</div>
               <div>
                 <div className="text-5xl font-extrabold">500+</div>
                 <div className="text-white/90">Business advices given over 15 years</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">🧑‍🤝‍🧑</div>
-              <div>
-                <div className="text-5xl font-extrabold">30+</div>
-                <div className="text-white/90">Business Excellence awards achieved</div>
               </div>
             </div>
           </div>
@@ -410,15 +441,15 @@ export default function HomePage() {
 
 function ServiceTile({ href, title, description, icon, delay = 0 }: { href: string; title: string; description: string; icon: 'bag' | 'settings' | 'chart' | 'users' | 'globe'; delay?: number }) {
   const iconEl = icon === 'bag' ? (
-    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">💼</span>
+    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">📋</span>
   ) : icon === 'settings' ? (
-    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">⚙️</span>
+    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">⚙</span>
   ) : icon === 'chart' ? (
-    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">📈</span>
+    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">📊</span>
   ) : icon === 'users' ? (
-    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">👥</span>
+    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">👤</span>
   ) : (
-    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">🌐</span>
+    <span className="w-10 h-10 rounded-md border border-red-200 text-red-600 grid place-items-center">🌍</span>
   )
 
   return (
@@ -441,7 +472,7 @@ function ServiceTile({ href, title, description, icon, delay = 0 }: { href: stri
 export function ServiceFeature({ href, title, description }: { href: string; title: string; description: string }) {
   return (
     <Link href={href} className="group block p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300 h-full">
-      <div className="text-red-600 text-3xl mb-4">📌</div>
+      <div className="text-red-600 text-3xl mb-4">•</div>
       <h3 className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors mb-3">{title}</h3>
       <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
     </Link>

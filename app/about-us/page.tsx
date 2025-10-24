@@ -119,7 +119,7 @@ export default function AboutUsPage() {
               <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Search className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">🔍 Clarity Over Complexity</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Clarity Over Complexity</h3>
               <p className="text-gray-600">
                 We cut through noise and deliver transparent insights that drive confident decisions.
               </p>
@@ -129,7 +129,7 @@ export default function AboutUsPage() {
               <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Handshake className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">🤝 Partnership First</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Partnership First</h3>
               <p className="text-gray-600">
                 We operate as an extension of your team — not outsiders with a slide deck.
               </p>
@@ -139,7 +139,7 @@ export default function AboutUsPage() {
               <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Settings className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">⚙️ Execution Excellence</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Execution Excellence</h3>
               <p className="text-gray-600">
                 Strategy means nothing without results. We measure success in real savings, improved performance, and stronger supplier relationships.
               </p>
@@ -149,7 +149,7 @@ export default function AboutUsPage() {
               <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">🌎 Global Reach, Local Touch</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Global Reach, Local Touch</h3>
               <p className="text-gray-600">
                 With bilingual experts across Mexico and the U.S., we bridge cultures and compliance with precision.
               </p>
@@ -212,14 +212,8 @@ export default function AboutUsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              href="/services" 
-              className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all hover:shadow-lg"
-            >
-              Explore Our Solutions
-            </Link>
-            <Link 
               href="/contact" 
-              className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-red-600 transition-all"
+              className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all hover:shadow-lg"
             >
               Get in Touch
             </Link>

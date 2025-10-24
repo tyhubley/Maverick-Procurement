@@ -6,7 +6,7 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/assets/pro-consulting-practice-935x572.webp"
+          src="/assets/GettyImages-1133767597.webp"
           alt="Professional consulting practice"
           className="w-full h-full object-cover"
         />

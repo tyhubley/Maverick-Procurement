@@ -228,17 +228,10 @@ export default function IndustriesPage() {
           {/* Right stats */}
           <div className="flex flex-col gap-10 lg:pl-16">
             <div className="flex items-center gap-6">
-              <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">🤝</div>
+              <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">+</div>
               <div>
                 <div className="text-5xl font-extrabold">500+</div>
                 <div className="text-white/90">Business advices given over 15 years</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">🧑‍🤝‍🧑</div>
-              <div>
-                <div className="text-5xl font-extrabold">30+</div>
-                <div className="text-white/90">Business Excellence awards achieved</div>
               </div>
             </div>
           </div>

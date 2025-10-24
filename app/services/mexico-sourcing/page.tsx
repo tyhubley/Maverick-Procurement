@@ -7,7 +7,7 @@ export default function MexicoSourcingPage() {
       heroImage="/assets/mexico-exports-replacing-china-mts.webp"
       heroLine="Global quality. Local cost advantage."
       introTitle="Maverick Procurement"
-      introBody="Maverick Procurement connects you to Mexico’s fast-growing manufacturing ecosystem — delivering high-quality parts and components with lower landed costs and shorter lead times. Our cross-border team manages sourcing, vetting, and supplier relationships from start to finish, ensuring you get enterprise-grade results with zero operational friction."
+      introBody="Maverick Procurement connects you to Mexico's fast-growing manufacturing ecosystem — delivering high-quality parts and components with lower landed costs and shorter lead times. Our cross-border team manages sourcing, vetting, and supplier relationships from start to finish, ensuring you get enterprise-grade results with zero operational friction."
       approachTitle="Our Approach"
       approachItems={[
         "Supplier Discovery & Qualification: Map suppliers across northern and central Mexico; verify certifications, capabilities, export experience.",
@@ -21,11 +21,12 @@ export default function MexicoSourcingPage() {
         "35–50% lead-time reduction compared to Asia",
         "Localized communication and rapid response to market changes",
       ]}
-      whyBody="Nearshoring to Mexico offers the best balance of cost, quality, and resilience in North America’s new supply-chain landscape. Maverick helps you capture that value safely, strategically, and fast."
+      whyBody="Nearshoring to Mexico offers the best balance of cost, quality, and resilience in North America's new supply-chain landscape. Maverick helps you capture that value safely, strategically, and fast."
       whatWeDo="Identify, qualify, and negotiate with suppliers; then manage relationships to secure sustainable savings and resilience."
       ctaText="Learn More About Mexico Sourcing"
       ctaHref="/contact"
       email="maverickprocure.com"
+      popular={[]}
     />
   )
 }

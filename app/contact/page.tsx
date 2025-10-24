@@ -112,7 +112,7 @@ export default function ContactPage() {
                     {/* Pointing finger with dashed lines */}
                     <div className="absolute -right-8 top-1/2 transform -translate-y-1/2">
                       <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-lg">👆</span>
+                        <span className="text-white text-lg">→</span>
                       </div>
                       {/* Dashed lines */}
                       <div className="absolute right-6 top-1/2 w-16 h-0.5 bg-red-500 opacity-60" style={{
@@ -147,7 +147,7 @@ export default function ContactPage() {
                     <div className="text-6xl text-red-500 font-bold">"</div>
                     <div>
                       <div className="font-bold text-gray-900 text-lg">Mindy Rapp</div>
-                      <div className="text-gray-600">Marketing Manager</div>
+                      <div className="text-gray-600">Chief Operating Officer</div>
                     </div>
                   </div>
                 </div>

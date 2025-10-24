@@ -25,3 +25,4 @@ export function AnimatedCounter({ to, duration = 1200, suffix = '' }: { to: numb
 }
 
 
+
