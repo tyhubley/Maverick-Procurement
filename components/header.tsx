@@ -40,7 +40,9 @@ export function Header() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Linkedin className="w-4 h-4 hover:text-red-500 cursor-pointer transition-colors" />
+            <a href="https://www.linkedin.com/in/jim-boldrey/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Linkedin className="w-4 h-4 hover:text-red-500 cursor-pointer transition-colors" />
+            </a>
           </div>
         </div>
       </div>

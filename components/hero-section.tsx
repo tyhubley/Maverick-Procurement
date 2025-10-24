@@ -27,9 +27,9 @@ export function HeroSection() {
 
           {/* Main heading */}
           <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-balance">
-            Multinational Supply Chain Transformation
+            Unlock 15–30% in hard
             <br />
-            & Low Cost Country Sourcing
+            cost savings without adding headcount.
           </h1>
           <p className="text-white/90 max-w-3xl mx-auto mb-8">
             Our goal is to provide business continuity without disrupting day-to-day operations. We deliver savings fast

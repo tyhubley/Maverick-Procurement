@@ -31,7 +31,7 @@ export function Footer() {
             <li><Link href="/services/supply-chain-advisory" className="hover:text-white">Supply Chain Advisory</Link></li>
           </ul>
           <div className="mt-4 flex items-center gap-3">
-            <a href="#" aria-label="LinkedIn" className="grid place-items-center w-10 h-10 rounded bg-white/10 hover:bg-white/20"><Linkedin className="w-4 h-4" /></a>
+            <a href="https://www.linkedin.com/in/jim-boldrey/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="grid place-items-center w-10 h-10 rounded bg-white/10 hover:bg-white/20"><Linkedin className="w-4 h-4" /></a>
           </div>
         </div>
       </div>
