@@ -32,8 +32,7 @@ export function HeroSection() {
             cost savings without adding headcount.
           </h1>
           <p className="text-white/90 max-w-3xl mx-auto mb-8">
-            Our goal is to provide business continuity without disrupting day-to-day operations. We deliver savings fast
-            with a proven track record across Mexico and India sourcing.
+            We help mid-market companies unlock millions in cost savings through smarter sourcing, stronger supplier negotiations, and nearshoring strategies that work.
           </p>
 
           {/* CTA Button */}
