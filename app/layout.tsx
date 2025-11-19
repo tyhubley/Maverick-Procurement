@@ -7,9 +7,9 @@ import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'MaverickProcure.com.',
+  description: 'Procurement Without Borders.',
+  generator: 'maverickprocure.com',
 }
 
 export default function RootLayout({
