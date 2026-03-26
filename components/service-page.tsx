@@ -1,15 +1,22 @@
 "use client"
+import type { ReactNode } from "react"
+import { Fragment } from "react"
 import Link from "next/link"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { usePathname } from "next/navigation"
 
 type FAQ = { q: string; a: string }
 
+const defaultContactHeadline = "Need a smarter sourcing strategy?"
+const defaultContactBody =
+  "Connect with our procurement experts — we'll help you identify cost savings, streamline suppliers, and strengthen your supply chain."
+
 export function ServicePage({
   title,
   heroImage = "/placeholder.jpg",
   sidebarHeading = "Procurement Services",
   sidebarItems = [
+    { label: "AI-Ready Procurement", href: "/ai-ready-procurement" },
     { label: "Cross-Border Sourcing", href: "/services/mexico-sourcing" },
     { label: "Procurement Transformation", href: "/services/procurement-transformation" },
     { label: "Cost Reduction Programs", href: "/services/cost-reduction" },
@@ -19,6 +26,15 @@ export function ServicePage({
   phone = "+1.815.791.1727",
   email,
   website,
+  breadcrumbItems,
+  heroSubtitle,
+  contactHeadline = defaultContactHeadline,
+  contactBody = defaultContactBody,
+  contactDownloadHref,
+  contactDownloadLabel,
+  customMain,
+  hideMarketingFooter = false,
+  stackSidebarBelowOnMobile = false,
   heroLine,
   introTitle,
   introBody,
@@ -48,6 +64,15 @@ export function ServicePage({
   phone?: string
   email?: string
   website?: string
+  breadcrumbItems?: { label: string; href?: string }[]
+  heroSubtitle?: string
+  contactHeadline?: string
+  contactBody?: string
+  contactDownloadHref?: string
+  contactDownloadLabel?: string
+  customMain?: ReactNode
+  hideMarketingFooter?: boolean
+  stackSidebarBelowOnMobile?: boolean
   heroLine?: string
   introTitle?: string
   introBody?: string
@@ -74,12 +99,43 @@ export function ServicePage({
           <div className="w-80 h-80 bg-red-500/10 rotate-45 absolute right-10 top-10" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">{title}</h1>
-          <div className="mt-3 text-sm text-gray-600">
-            <Link href="/" className="hover:text-red-600">Home</Link>
-            <span className="mx-2">/</span>
-            <span>{title}</span>
-          </div>
+          {breadcrumbItems && breadcrumbItems.length > 0 ? (
+            <>
+              <div className="text-sm text-gray-600">
+                <Link href="/" className="hover:text-red-600">
+                  Home
+                </Link>
+                {breadcrumbItems.map((item, i) => (
+                  <Fragment key={`${item.label}-${i}`}>
+                    <span className="mx-2">/</span>
+                    {item.href ? (
+                      <Link href={item.href} className="hover:text-red-600">
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span>{item.label}</span>
+                    )}
+                  </Fragment>
+                ))}
+              </div>
+              <h1 className="mt-4 text-4xl md:text-5xl font-bold text-gray-900">{title}</h1>
+              {heroSubtitle ? (
+                <p className="mt-2 text-2xl md:text-3xl font-bold text-red-600">{heroSubtitle}</p>
+              ) : null}
+              <div className="mt-4 h-1 w-16 bg-red-600 rounded" />
+            </>
+          ) : (
+            <>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900">{title}</h1>
+              <div className="mt-3 text-sm text-gray-600">
+                <Link href="/" className="hover:text-red-600">
+                  Home
+                </Link>
+                <span className="mx-2">/</span>
+                <span>{title}</span>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -87,7 +143,9 @@ export function ServicePage({
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Sidebar (clone-style) */}
-          <aside className="lg:col-span-1 space-y-8">
+          <aside
+            className={`lg:col-span-1 space-y-8 ${stackSidebarBelowOnMobile ? "order-2 lg:order-1" : ""}`}
+          >
             <div className="rounded-2xl border bg-gray-50 p-8">
               <h2 className="text-3xl font-extrabold text-gray-900">{sidebarHeading}</h2>
               <div className="mt-3 h-1 w-16 bg-red-600 rounded" />
@@ -118,10 +176,8 @@ export function ServicePage({
                 style={{ backgroundImage: "url('/placeholder.svg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
               />
               <div className="relative">
-                <h4 className="text-3xl font-extrabold">Need a smarter sourcing strategy?</h4>
-                <p className="mt-4 text-white/90 text-lg leading-7">
-                  Connect with our procurement experts — we'll help you identify cost savings, streamline suppliers, and strengthen your supply chain.
-                </p>
+                <h4 className="text-3xl font-extrabold">{contactHeadline}</h4>
+                <p className="mt-4 text-white/90 text-lg leading-7">{contactBody}</p>
                 {phone && (
                   <div className="mt-8 text-3xl md:text-4xl font-extrabold tracking-tight">{phone}</div>
                 )}
@@ -142,108 +198,138 @@ export function ServicePage({
                 >
                   Contact Us
                 </Link>
+                {contactDownloadHref && contactDownloadLabel ? (
+                  <a
+                    href={contactDownloadHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 block w-full py-4 text-lg font-semibold text-white"
+                  >
+                    {contactDownloadLabel}
+                  </a>
+                ) : null}
               </div>
             </div>
 
           </aside>
 
           {/* Main */}
-          <div className="lg:col-span-2 space-y-10">
-            <ScrollReveal>
-              <img src={heroImage} alt={title} className="w-full h-72 object-cover rounded-md" />
-            </ScrollReveal>
+          <div
+            className={`lg:col-span-2 space-y-10 ${stackSidebarBelowOnMobile ? "order-1 lg:order-2" : ""}`}
+          >
+            {customMain ? (
+              <div className="space-y-10">{customMain}</div>
+            ) : (
+              <>
+                <ScrollReveal>
+                  <img src={heroImage} alt={title} className="w-full h-72 object-cover rounded-md" />
+                </ScrollReveal>
 
-            <ScrollReveal>
-              <div>
-                {heroLine && (
-                  <p className="text-red-600 text-sm uppercase tracking-widest">{heroLine}</p>
-                )}
-                {introTitle && (
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2">{introTitle}</h2>
-                )}
-                {introBody && (<p className="mt-4 text-gray-700">{introBody}</p>)}
-              </div>
-            </ScrollReveal>
+                <ScrollReveal>
+                  <div>
+                    {heroLine && (
+                      <p className="text-red-600 text-sm uppercase tracking-widest">{heroLine}</p>
+                    )}
+                    {introTitle && (
+                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2">{introTitle}</h2>
+                    )}
+                    {introBody && <p className="mt-4 text-gray-700">{introBody}</p>}
+                  </div>
+                </ScrollReveal>
 
-            {(approachItems.length > 0 || advantagesItems.length > 0) && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {approachItems.length > 0 && (
+                {(approachItems.length > 0 || advantagesItems.length > 0) && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {approachItems.length > 0 && (
+                      <ScrollReveal>
+                        <div className="border rounded-xl p-6">
+                          <h3 className="text-xl font-semibold text-gray-900">{approachTitle}</h3>
+                          <ul className="mt-4 space-y-2 text-gray-700 list-disc pl-5">
+                            {approachItems.map((s) => (
+                              <li key={s}>{s}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </ScrollReveal>
+                    )}
+                    {advantagesItems.length > 0 && (
+                      <ScrollReveal delay={100}>
+                        <div className="border rounded-xl p-6">
+                          <h3 className="text-xl font-semibold text-gray-900">
+                            {advantagesTitle || "What You Get"}
+                          </h3>
+                          <ul className="mt-4 space-y-2 text-gray-700 list-disc pl-5">
+                            {advantagesItems.map((s) => (
+                              <li key={s}>{s}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </ScrollReveal>
+                    )}
+                  </div>
+                )}
+
+                {whatWeDo ? (
                   <ScrollReveal>
                     <div className="border rounded-xl p-6">
-                      <h3 className="text-xl font-semibold text-gray-900">{approachTitle}</h3>
-                      <ul className="mt-4 space-y-2 text-gray-700 list-disc pl-5">
-                        {approachItems.map((s) => (<li key={s}>{s}</li>))}
-                      </ul>
+                      <h3 className="text-xl font-semibold text-gray-900">What we do?</h3>
+                      <p className="mt-4 text-gray-700">{whatWeDo}</p>
                     </div>
                   </ScrollReveal>
-                )}
-                {advantagesItems.length > 0 && (
-                  <ScrollReveal delay={100}>
+                ) : null}
+
+                {(whyTitle || whyBody) && (
+                  <ScrollReveal>
                     <div className="border rounded-xl p-6">
-                      <h3 className="text-xl font-semibold text-gray-900">{advantagesTitle || 'What You Get'}</h3>
-                      <ul className="mt-4 space-y-2 text-gray-700 list-disc pl-5">
-                        {advantagesItems.map((s) => (<li key={s}>{s}</li>))}
-                      </ul>
+                      <h3 className="text-xl font-semibold text-gray-900">{whyTitle || "Why It Matters"}</h3>
+                      <p className="mt-4 text-gray-700">{whyBody}</p>
                     </div>
                   </ScrollReveal>
                 )}
-              </div>
-            )}
 
-            <ScrollReveal>
-              <div className="border rounded-xl p-6">
-                <h3 className="text-xl font-semibold text-gray-900">What we do?</h3>
-                <p className="mt-4 text-gray-700">{whatWeDo}</p>
-              </div>
-            </ScrollReveal>
+                {ctaText && ctaHref && (
+                  <ScrollReveal>
+                    <div>
+                      <Link href={ctaHref} className="text-red-600 font-semibold">
+                        {ctaText} →
+                      </Link>
+                    </div>
+                  </ScrollReveal>
+                )}
 
-            {(whyTitle || whyBody) && (
-              <ScrollReveal>
-                <div className="border rounded-xl p-6">
-                  <h3 className="text-xl font-semibold text-gray-900">{whyTitle || 'Why It Matters'}</h3>
-                  <p className="mt-4 text-gray-700">{whyBody}</p>
-                </div>
-              </ScrollReveal>
-            )}
+                {faqs.length > 0 && (
+                  <ScrollReveal>
+                    <div className="border rounded-xl p-6">
+                      <h3 className="text-xl font-semibold text-gray-900">Common Questions for this project</h3>
+                      <div className="mt-6 space-y-6">
+                        {faqs.map((f) => (
+                          <div key={f.q}>
+                            <h4 className="text-lg font-semibold text-gray-900">{f.q}</h4>
+                            <p className="mt-2 text-gray-700">{f.a}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                )}
 
-            {ctaText && ctaHref && (
-              <ScrollReveal>
-                <div>
-                  <Link href={ctaHref} className="text-red-600 font-semibold">{ctaText} →</Link>
-                </div>
-              </ScrollReveal>
-            )}
-
-            {faqs.length > 0 && (
-              <ScrollReveal>
-                <div className="border rounded-xl p-6">
-                  <h3 className="text-xl font-semibold text-gray-900">Common Questions for this project</h3>
-                  <div className="mt-6 space-y-6">
-                    {faqs.map((f) => (
-                      <div key={f.q}>
-                        <h4 className="text-lg font-semibold text-gray-900">{f.q}</h4>
-                        <p className="mt-2 text-gray-700">{f.a}</p>
+                <ScrollReveal>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {popular.map((p) => (
+                      <div key={p.title} className="border rounded-xl p-6">
+                        <h4 className="text-lg font-semibold text-gray-900">{p.title}</h4>
+                        <p className="mt-2 text-gray-700">{p.body}</p>
                       </div>
                     ))}
                   </div>
-                </div>
-              </ScrollReveal>
+                </ScrollReveal>
+              </>
             )}
-
-            <ScrollReveal>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {popular.map((p) => (
-                  <div key={p.title} className="border rounded-xl p-6">
-                    <h4 className="text-lg font-semibold text-gray-900">{p.title}</h4>
-                    <p className="mt-2 text-gray-700">{p.body}</p>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
           </div>
         </div>
       </section>
 
+      {!hideMarketingFooter ? (
+        <>
       {/* CTA Banner */}
       <section className="relative overflow-hidden">
         {/* Background image on the right with red overlay */}
@@ -266,6 +352,16 @@ export function ServicePage({
               >
                 Contact Us
               </Link>
+              <div className="mt-4">
+                <a
+                  href="/maverick_sell_sheet_evergreen.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-semibold underline underline-offset-4 hover:text-white/90"
+                >
+                  Download Maverick Sell Sheet
+                </a>
+              </div>
             </div>
           </div>
 
@@ -337,6 +433,8 @@ export function ServicePage({
           </div>
         </div>
       </section>
+        </>
+      ) : null}
     </div>
   )
 }

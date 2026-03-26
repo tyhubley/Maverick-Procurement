@@ -93,6 +93,11 @@ export function Header() {
                 >
                   <div className="space-y-2">
                     <DropdownMenuItem asChild>
+                      <Link href="/ai-ready-procurement" className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors font-bold text-base">
+                        AI-Ready Procurement
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
                       <Link href="/services/mexico-sourcing" className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors font-bold text-base">
                         Cross-Border Sourcing (Mexico Advantage)
                       </Link>

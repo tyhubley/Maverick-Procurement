@@ -419,6 +419,16 @@ export default function HomePage() {
               >
                 Contact Us
               </Link>
+              <div className="mt-4">
+                <a
+                  href="/maverick_sell_sheet_evergreen.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-semibold underline underline-offset-4 hover:text-white/90"
+                >
+                  Download Maverick Sell Sheet
+                </a>
+              </div>
             </div>
           </div>
 
@@ -465,17 +475,6 @@ function ServiceTile({ href, title, description, icon, delay = 0 }: { href: stri
         <p className="text-gray-600 mt-3">{description}</p>
       </Link>
     </ScrollReveal>
-  )
-}
-
-
-export function ServiceFeature({ href, title, description }: { href: string; title: string; description: string }) {
-  return (
-    <Link href={href} className="group block p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300 h-full">
-      <div className="text-red-600 text-3xl mb-4">•</div>
-      <h3 className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors mb-3">{title}</h3>
-      <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
-    </Link>
   )
 }
 

@@ -210,13 +210,21 @@ export default function AboutUsPage() {
           <p className="text-xl text-red-100 mb-8 max-w-4xl mx-auto">
             Whether you need to build a world-class procurement function, tap into Mexico's supplier base, or find hidden savings in your current spend, Maverick is the partner that makes it happen.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link 
               href="/contact" 
               className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all hover:shadow-lg"
             >
               Get in Touch
             </Link>
+            <a
+              href="/maverick_sell_sheet_evergreen.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg font-semibold text-red-100 underline underline-offset-4 hover:text-white"
+            >
+              Download Maverick Sell Sheet
+            </a>
           </div>
         </div>
       </section>

@@ -222,6 +222,16 @@ export default function IndustriesPage() {
               >
                 Contact Us
               </Link>
+              <div className="mt-4">
+                <a
+                  href="/maverick_sell_sheet_evergreen.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-semibold underline underline-offset-4 hover:text-white/90"
+                >
+                  Download Maverick Sell Sheet
+                </a>
+              </div>
             </div>
           </div>
 

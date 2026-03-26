@@ -24,6 +24,7 @@ export function Footer() {
         <div>
           <h4 className="text-xl font-bold">Our Solutions</h4>
           <ul className="mt-4 space-y-2 text-white/80">
+            <li><Link href="/ai-ready-procurement" className="hover:text-white">AI-Ready Procurement</Link></li>
             <li><Link href="/services/mexico-sourcing" className="hover:text-white">Cross-Border Sourcing</Link></li>
             <li><Link href="/services/procurement-transformation" className="hover:text-white">Procurement Transformation</Link></li>
             <li><Link href="/services/cost-reduction" className="hover:text-white">Cost Reduction Programs</Link></li>
