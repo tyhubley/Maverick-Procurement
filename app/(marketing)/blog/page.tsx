@@ -31,7 +31,11 @@ export default function BlogPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               {blogPosts.map((blogPost) => (
-                <article key={blogPost.slug} className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+                <Link
+                  key={blogPost.slug}
+                  href={`/blog/${blogPost.slug}`}
+                  className="group block bg-white rounded-lg shadow-lg overflow-hidden mb-8 cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 hover:ring-1 hover:ring-red-200"
+                >
                   <div className="relative">
                     <img
                       src={blogPost.image}
@@ -76,15 +80,12 @@ export default function BlogPage() {
                       ))}
                     </div>
 
-                    <Link
-                      href={`/blog/${blogPost.slug}`}
-                      className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
-                    >
+                    <span className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg font-semibold group-hover:bg-red-700 transition-colors">
                       <span>Read More</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                      <ArrowRight className="w-4 h-4" aria-hidden />
+                    </span>
                   </div>
-                </article>
+                </Link>
               ))}
 
               <div className="flex justify-center items-center gap-4">
