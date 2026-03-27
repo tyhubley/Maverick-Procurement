@@ -7,10 +7,49 @@ import { useState } from "react"
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setSubmitted(true)
+    setError(null)
+    setSubmitting(true)
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    const payload = {
+      name: String(formData.get("name") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
+      phone: (() => {
+        const v = String(formData.get("phone") ?? "").trim()
+        return v || undefined
+      })(),
+      company: (() => {
+        const v = String(formData.get("company") ?? "").trim()
+        return v || undefined
+      })(),
+    }
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+      const data = (await res.json().catch(() => ({}))) as { error?: string }
+
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.")
+        return
+      }
+
+      setSubmitted(true)
+      form.reset()
+    } catch {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -66,24 +105,32 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-1">
                     <label className="block text-sm font-medium text-gray-700">Name</label>
-                    <Input name="name" placeholder="Your name" required className="mt-2" />
+                    <Input name="name" placeholder="Your name" required className="mt-2" disabled={submitting} />
                   </div>
                   <div className="md:col-span-1">
                     <label className="block text-sm font-medium text-gray-700">Email</label>
-                    <Input type="email" name="email" placeholder="you@example.com" required className="mt-2" />
+                    <Input type="email" name="email" placeholder="you@example.com" required className="mt-2" disabled={submitting} />
                   </div>
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-gray-700">Message</label>
-                    <Textarea name="message" placeholder="How can we help?" rows={6} required className="mt-2" />
+                    <Textarea name="message" placeholder="How can we help?" rows={6} required className="mt-2" disabled={submitting} />
                   </div>
+                  {error ? (
+                    <div className="md:col-span-2">
+                      <p className="text-sm text-red-600" role="alert">
+                        {error}
+                      </p>
+                    </div>
+                  ) : null}
                   <div className="md:col-span-2">
-                    <Button type="submit" className="bg-red-500 hover:bg-red-600 text-white">Submit</Button>
+                    <Button type="submit" className="bg-red-500 hover:bg-red-600 text-white" disabled={submitting}>
+                      {submitting ? "Sending…" : "Submit"}
+                    </Button>
                   </div>
                 </form>
               ) : (
                 <div className="mt-6 rounded-md bg-green-50 p-4 border border-green-200">
-                  <p className="font-medium text-green-900">Thanks for submitting!</p>
-                  <p className="mt-1 text-green-800">We'll be in touch shortly.</p>
+                  <p className="font-medium text-green-900">Thank you. We will be in touch shortly.</p>
                 </div>
               )}
             </div>
