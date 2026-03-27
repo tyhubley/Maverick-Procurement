@@ -64,6 +64,7 @@ function buildEmailBodies(
 }
 
 export async function POST(request: Request) {
+  console.log("RESEND KEY EXISTS:", !!process.env.RESEND_API_KEY)
   noStore()
 
   const apiKey = getResendApiKey()
