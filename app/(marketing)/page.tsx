@@ -104,7 +104,7 @@ export default function HomePage() {
               </h2>
               <p className="mt-4 text-lg font-semibold text-gray-900">Proven. Bottom Line. Impact.</p>
               <p className="mt-4 text-gray-600 max-w-2xl">
-                15+ years driving multimillion-dollar savings in manufacturing supply chains.
+                20+ years driving multimillion-dollar savings in manufacturing supply chains.
               </p>
               <p className="mt-2 text-gray-600 max-w-2xl">
                 Average 12–25% savings achieved in the first 90 days.
@@ -438,7 +438,7 @@ export default function HomePage() {
               <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">+</div>
               <div>
                 <div className="text-5xl font-extrabold">500+</div>
-                <div className="text-white/90">Business advices given over 15 years</div>
+                <div className="text-white/90">Business advices given over 20+ years</div>
               </div>
             </div>
           </div>

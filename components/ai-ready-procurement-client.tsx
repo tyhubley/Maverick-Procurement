@@ -42,6 +42,7 @@ export function AiReadyProcurementClient() {
       contactBody="Connect with our experts — we will assess your AI readiness and show you exactly where the savings are hiding."
       contactDownloadHref="/maverick_sell_sheet_evergreen.pdf"
       contactDownloadLabel="Download AI Readiness Overview"
+      ctaAdviceSubtext="Business advices given over 20+ years"
       stackSidebarBelowOnMobile
       customMain={
         <>
@@ -75,8 +76,8 @@ export function AiReadyProcurementClient() {
                 </p>
               </div>
               <div className="p-6 text-center md:px-4">
-                <div className="text-2xl font-extrabold text-gray-900 md:text-3xl">15+ Years</div>
-                <p className="mt-2 text-sm text-gray-600">Manufacturing supply chain expertise</p>
+                <div className="text-2xl font-extrabold text-gray-900 md:text-3xl">20+</div>
+                <p className="mt-2 text-sm text-gray-600">Years in manufacturing supply chains</p>
               </div>
             </div>
           </div>
@@ -225,7 +226,7 @@ export function AiReadyProcurementClient() {
               <h3 className="text-2xl font-extrabold md:text-3xl">The Foundation Has to Come Before the Technology.</h3>
               <p className="mt-3 text-lg font-semibold text-red-500">Let&apos;s Build Yours.</p>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/90">
-                We have spent 15 years doing the procurement work that makes AI possible in manufacturing operations. Supplier
+                We have spent 20+ years doing the procurement work that makes AI possible in manufacturing operations. Supplier
                 consolidations. Cost leakage recovery. Data cleanup. Process documentation. Sourcing stabilization. We know what
                 good looks like — and we know how to get you there on a timeline that works for your business.
               </p>

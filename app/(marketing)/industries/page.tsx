@@ -241,7 +241,7 @@ export default function IndustriesPage() {
               <div className="grid place-items-center w-16 h-16 rounded-md bg-white/10 border border-white/20 text-white text-3xl">+</div>
               <div>
                 <div className="text-5xl font-extrabold">500+</div>
-                <div className="text-white/90">Business advices given over 15 years</div>
+                <div className="text-white/90">Business advices given over 20+ years</div>
               </div>
             </div>
           </div>

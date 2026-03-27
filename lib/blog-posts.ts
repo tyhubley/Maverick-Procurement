@@ -206,7 +206,7 @@ The companies that command premium valuations in this environment are the ones t
 
 ## Where Maverick Comes In
 
-We have spent 15 years doing the hard, unglamorous work of manufacturing procurement transformation. Supplier consolidations. Cost leakage audits. ERP data cleanup. Process documentation. Sourcing stabilization in volatile material environments.
+We have spent 20+ years doing the hard, unglamorous work of manufacturing procurement transformation. Supplier consolidations. Cost leakage audits. ERP data cleanup. Process documentation. Sourcing stabilization in volatile material environments.
 
 None of that work is glamorous. All of it is valuable. And in the current environment, it is the exact work that determines whether AI creates value or creates chaos in a manufacturing operation.
 
