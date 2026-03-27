@@ -5,9 +5,6 @@ import { unstable_noStore as noStore } from "next/cache"
 const TO = "jim.boldrey@maverickprocure.com"
 const SUBJECT = "New Contact Form Submission - Maverick Website"
 
-/** FormSubmit fallback URL when Resend is not configured on the host (e.g. Vercel env missing). */
-const FORMSUBMIT_AJAX = `https://formsubmit.co/ajax/${encodeURIComponent(TO)}`
-
 export const dynamic = "force-dynamic"
 export const runtime = "nodejs"
 
@@ -19,6 +16,7 @@ function escapeHtml(text: string) {
     .replace(/"/g, "&quot;")
 }
 
+/** Reads `process.env.RESEND_API_KEY`; ignores empty values and common placeholders. */
 function getResendApiKey(): string | undefined {
   const raw = process.env.RESEND_API_KEY?.trim()
   if (!raw) return undefined
@@ -65,50 +63,14 @@ function buildEmailBodies(
   return { text: textLines.join("\n"), html }
 }
 
-async function sendViaFormSubmit(
-  nameStr: string,
-  emailStr: string,
-  messageStr: string,
-  phoneStr: string,
-  companyStr: string,
-): Promise<{ ok: boolean; error?: string }> {
-  try {
-    const res = await fetch(FORMSUBMIT_AJAX, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        _subject: SUBJECT,
-        _replyto: emailStr,
-        _captcha: "false",
-        name: nameStr,
-        email: emailStr,
-        message: messageStr,
-        phone: phoneStr || "(not provided)",
-        company: companyStr || "(not provided)",
-      }),
-      signal: AbortSignal.timeout(20_000),
-    })
-
-    const data = (await res.json().catch(() => null)) as Record<string, unknown> | null
-    if (!res.ok) {
-      return { ok: false, error: typeof data?.error === "string" ? data.error : "FormSubmit request failed" }
-    }
-    const success = data?.success
-    if (success === false || success === "false") {
-      return { ok: false, error: "FormSubmit rejected the submission" }
-    }
-    return { ok: true }
-  } catch (e) {
-    console.error("FormSubmit error:", e)
-    return { ok: false, error: "Failed to send message. Please try again later." }
-  }
-}
-
 export async function POST(request: Request) {
   noStore()
+
+  const apiKey = getResendApiKey()
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not set or is invalid")
+    return NextResponse.json({ error: "Email service is not configured." }, { status: 500 })
+  }
 
   let body: unknown
   try {
@@ -133,60 +95,29 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Name, email, and message are required." }, { status: 400 })
   }
 
-  const apiKey = getResendApiKey()
+  const { text, html } = buildEmailBodies(nameStr, emailStr, messageStr, phoneStr, companyStr)
+  const from =
+    process.env.RESEND_FROM_EMAIL?.trim() || "Maverick Website <onboarding@resend.dev>"
 
-  if (apiKey) {
-    const { text, html } = buildEmailBodies(nameStr, emailStr, messageStr, phoneStr, companyStr)
-    const from =
-      process.env.RESEND_FROM_EMAIL?.trim() || "Maverick Website <onboarding@resend.dev>"
+  try {
+    const resend = new Resend(apiKey)
+    const { data, error } = await resend.emails.send({
+      from,
+      to: [TO],
+      subject: SUBJECT,
+      text,
+      html,
+      replyTo: emailStr,
+    })
 
-    try {
-      const resend = new Resend(apiKey)
-      const { data, error } = await resend.emails.send({
-        from,
-        to: [TO],
-        subject: SUBJECT,
-        text,
-        html,
-        replyTo: emailStr,
-      })
-
-      if (error) {
-        console.error("Resend error:", error)
-        if (process.env.NODE_ENV === "production") {
-          const fb = await sendViaFormSubmit(nameStr, emailStr, messageStr, phoneStr, companyStr)
-          if (fb.ok) {
-            return NextResponse.json({ ok: true, via: "fallback" })
-          }
-        }
-        return NextResponse.json({ error: "Failed to send message. Please try again later." }, { status: 502 })
-      }
-
-      return NextResponse.json({ ok: true, id: data?.id, via: "resend" })
-    } catch (e) {
-      console.error("Contact API Resend error:", e)
-      if (process.env.NODE_ENV === "production") {
-        const fb = await sendViaFormSubmit(nameStr, emailStr, messageStr, phoneStr, companyStr)
-        if (fb.ok) return NextResponse.json({ ok: true, via: "fallback" })
-      }
-      return NextResponse.json({ error: "Failed to send message. Please try again later." }, { status: 500 })
+    if (error) {
+      console.error("Resend error:", error)
+      return NextResponse.json({ error: "Failed to send message. Please try again later." }, { status: 502 })
     }
-  }
 
-  if (process.env.NODE_ENV === "production") {
-    const fb = await sendViaFormSubmit(nameStr, emailStr, messageStr, phoneStr, companyStr)
-    if (fb.ok) {
-      return NextResponse.json({ ok: true, via: "fallback" })
-    }
-    return NextResponse.json({ error: fb.error || "Failed to send message. Please try again later." }, { status: 502 })
+    return NextResponse.json({ ok: true, id: data?.id })
+  } catch (e) {
+    console.error("Contact API error:", e)
+    return NextResponse.json({ error: "Failed to send message. Please try again later." }, { status: 500 })
   }
-
-  console.error("RESEND_API_KEY is not set (development)")
-  return NextResponse.json(
-    {
-      error:
-        "Email service is not configured. Add RESEND_API_KEY to .env.local for local development.",
-    },
-    { status: 500 },
-  )
 }
