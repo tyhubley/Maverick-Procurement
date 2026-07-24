@@ -213,6 +213,24 @@ export function AiReadyProcurementClient() {
             </div>
           </div>
 
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 md:p-10">
+            <p className="text-sm font-semibold uppercase tracking-wide text-red-600">Technology Partner</p>
+            <h3 className="mt-2 text-2xl font-bold text-gray-900 md:text-3xl">Powered by KIPO AI</h3>
+            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
+              We have partnered with KIPO AI, an AI-native sourcing and procurement platform, to bring intelligent
+              automation to the clean foundation we build. Once your supplier data, spend, and processes are structured
+              correctly, KIPO&apos;s technology is what turns that foundation into speed, visibility, and savings.
+            </p>
+            <a
+              href="https://www.kipo.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-red-600 px-8 py-4 font-semibold text-white hover:bg-red-700"
+            >
+              Visit KIPO AI
+            </a>
+          </div>
+
           <div className="relative overflow-hidden rounded-2xl bg-[#1f242b] p-8 text-white md:p-10">
             <div
               className="pointer-events-none absolute inset-0 opacity-20"
