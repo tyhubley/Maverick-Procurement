@@ -46,6 +46,30 @@ export function AiReadyProcurementClient() {
       stackSidebarBelowOnMobile
       customMain={
         <>
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-8">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                <img src="/assets/kipo-logo.svg" alt="KIPO AI" className="h-8 w-auto shrink-0 md:h-9" />
+                <div className="hidden h-12 w-px shrink-0 bg-gray-200 sm:block" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-red-600">Technology Partner</p>
+                  <p className="mt-1 max-w-xl text-gray-700">
+                    We&apos;ve partnered with KIPO AI, an AI-native sourcing and procurement platform, to turn the clean
+                    foundation we build into speed, visibility, and savings.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="https://www.kipo.ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex shrink-0 items-center justify-center rounded-full bg-red-600 px-6 py-3 font-semibold text-white hover:bg-red-700"
+              >
+                Visit KIPO AI
+              </a>
+            </div>
+          </div>
+
           <div className="rounded-xl border-l-4 border-l-red-600 bg-red-50/90 py-5 pl-4 pr-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
               <span className="inline-flex w-fit shrink-0 items-center rounded-full bg-red-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-red-700">
@@ -211,24 +235,6 @@ export function AiReadyProcurementClient() {
                 </p>
               </div>
             </div>
-          </div>
-
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 md:p-10">
-            <p className="text-sm font-semibold uppercase tracking-wide text-red-600">Technology Partner</p>
-            <h3 className="mt-2 text-2xl font-bold text-gray-900 md:text-3xl">Powered by KIPO AI</h3>
-            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">
-              We have partnered with KIPO AI, an AI-native sourcing and procurement platform, to bring intelligent
-              automation to the clean foundation we build. Once your supplier data, spend, and processes are structured
-              correctly, KIPO&apos;s technology is what turns that foundation into speed, visibility, and savings.
-            </p>
-            <a
-              href="https://www.kipo.ai/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-red-600 px-8 py-4 font-semibold text-white hover:bg-red-700"
-            >
-              Visit KIPO AI
-            </a>
           </div>
 
           <div className="relative overflow-hidden rounded-2xl bg-[#1f242b] p-8 text-white md:p-10">
