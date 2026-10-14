@@ -78,7 +78,7 @@ export default function HomePage() {
       quote: "I have worked with Jim on several projects focused on product sourcing and cost optimization, and I have greatly valued his expertise, strategic insight, and extensive supplier network. The cost savings identified and promised have been validated in practice, demonstrating the tangible value he brings to the business. I particularly appreciate Jim's direct, pragmatic approach and his ability to combine strategic thinking with hands-on, day-to-day execution. His combination of commercial insight, supplier relationships, and focus on measurable results makes him a highly valuable partner.",
       author: "Peter Mendel",
       role: "CEO, Schwing America",
-      image: "/5 (1).png",
+      image: "/assets/Logo_Schwing_Group.svg.png?v=2",
     },
   ]
 
