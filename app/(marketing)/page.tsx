@@ -57,8 +57,8 @@ export default function HomePage() {
     { src: "/logos/latitude_corp_logo.jpeg", alt: "Latitude Corp" },
     { src: "/1abc1b9d-ca36-48e3-8285-a70084bcfe79.png", alt: "Partner Logo" },
     { src: "/646f53cfa64f42e6c9164509_sastrify_logo.webp", alt: "Sastrify" },
-    { src: "https://logo.clearbit.com/kipo.ai", alt: "Kipo AI" },
-    { src: "https://www.chaseproducts.com/images/chaseLogo.png", alt: "Chase Products Co." },
+    { src: "/assets/kipo-logo.svg", alt: "KIPO AI" },
+    { src: "/logos/chase-products-logo.png", alt: "Chase Products Co." },
   ]
 
   const testimonials = [
@@ -78,6 +78,12 @@ export default function HomePage() {
       quote: "I have worked with Jim on several projects focused on product sourcing and cost optimization, and I have greatly valued his expertise, strategic insight, and extensive supplier network. The cost savings identified and promised have been validated in practice, demonstrating the tangible value he brings to the business. I particularly appreciate Jim's direct, pragmatic approach and his ability to combine strategic thinking with hands-on, day-to-day execution. His combination of commercial insight, supplier relationships, and focus on measurable results makes him a highly valuable partner.",
       author: "Peter Mendel",
       role: "CEO, Schwing America",
+      image: "/5 (1).png",
+    },
+    {
+      quote: "Maverick Sourcing & Procurement helped us identify, develop strategies for, and execute supply chain efficiency opportunities while partnering closely with our procurement team to strengthen sourcing and procurement processes, resulting in an enhanced overall approach to supply chain management that continues to drive value in our business.",
+      author: "Paul Harris",
+      role: "CEO, Latitude Corp",
       image: "/5 (1).png",
     },
   ]
